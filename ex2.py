@@ -47,7 +47,7 @@ class BinarySearchTree:
         parent = None
         pivot = None
 
-        # find insertion position and deepest pivot on the path
+        
         while current is not None:
             if current.balance != 0:
                 pivot = current
@@ -58,7 +58,7 @@ class BinarySearchTree:
             else:
                 current = current.right
 
-        # insert new node
+        
         new_node = Node(data, parent)
         if data < parent.data:
             parent.left = new_node
@@ -72,13 +72,13 @@ class BinarySearchTree:
         else:
             inserted_in_left_subtree = data < pivot.data
 
-            # Case 2: pivot exists, but insertion is into shorter subtree
+            
             if (pivot.balance > 0 and not inserted_in_left_subtree) or \
                (pivot.balance < 0 and inserted_in_left_subtree):
                 print("Case #2: A pivot exists, and a node was added to the shorter subtree")
 
             else:
-                # inserted into longer subtree -> Case 3 or Case 4
+                
                 if inserted_in_left_subtree:
                     child = pivot.left
                     if data < child.data:
@@ -92,7 +92,7 @@ class BinarySearchTree:
                     else:
                         print("Case 4 not supported")
 
-        # always recompute balances so stored balances stay correct
+
         self.compute_balances()
         return new_node
 
@@ -111,7 +111,7 @@ t1 = BinarySearchTree()
 t1.insert(30)
 t1.insert(20)
 t1.insert(40)
-t1.insert(10)   # Case #1: Pivot not detected
+t1.insert(10)   
 t1.print_inorder_with_balance()
 print()
 
@@ -121,7 +121,7 @@ print("TEST 2")
 t2 = BinarySearchTree()
 t2.insert(30)
 t2.insert(20)
-t2.insert(40)   # Case #2: pivot exists, inserted into shorter subtree
+t2.insert(40)   
 t2.print_inorder_with_balance()
 print()
 
@@ -131,7 +131,7 @@ print("TEST 3")
 t3 = BinarySearchTree()
 t3.insert(30)
 t3.insert(20)
-t3.insert(10)   # Case 3 not supported
+t3.insert(10)   
 t3.print_inorder_with_balance()
 print()
 
@@ -141,6 +141,6 @@ print("TEST 4")
 t4 = BinarySearchTree()
 t4.insert(30)
 t4.insert(10)
-t4.insert(20)   # Case 4 not supported
+t4.insert(20)   
 t4.print_inorder_with_balance()
 print()
